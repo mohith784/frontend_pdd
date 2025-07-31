@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".HowStock"
+    android:padding="24dp">
+
+    <!-- Circular Icon -->
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_circle_light"
+        android:padding="20dp"
+        android:src="@drawable/ic_trend_up"
+        android:scaleType="centerInside"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How stock predicted"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#222222"
+        app:layout_constraintTop_toBottomOf="@id/image_icon"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Subtext -->
+    <TextView
+        android:id="@+id/tv_subtext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Based on recent trends, we expect the stock to run out in 1 week."
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- OK Button -->
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="OK"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/bg_button_rounded"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtext"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

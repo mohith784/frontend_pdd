@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:id="@+id/Butoon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please fill in the form to continue"
+            android:textColor="#666666"
+            android:layout_marginTop="4dp" />
+
+        <!-- Full Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp" />
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your full name"
+            android:background="@drawable/edittext_bg"
+            android:padding="12dp"
+            android:inputType="textPersonName" />
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your email address"
+            android:background="@drawable/edittext_bg"
+            android:padding="12dp"
+            android:inputType="textEmailAddress" />
+
+        <!-- Password -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Create password"
+            android:background="@drawable/edittext_bg"
+            android:padding="12dp"
+            android:inputType="textPassword" />
+
+        <!-- Confirm Password -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm your password"
+            android:background="@drawable/edittext_bg"
+            android:padding="12dp"
+            android:inputType="textPassword" />
+
+        <!-- Sign Up Button -->
+        <Button
+            android:id="@+id/signupButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#007BFF" />
+
+        <!-- Already have account -->
+        <TextView
+            android:id="@+id/loginText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="30dp"
+            android:text="Already have an account? Log In"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <!-- Terms and Policy -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="20dp"
+            android:text="By signing up, you agree to our Terms of Service and Privacy Policy"
+            android:textColor="#888888"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</ScrollView>

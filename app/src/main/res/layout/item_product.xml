@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:layout_marginHorizontal="12dp"
+    android:elevation="6dp"
+    android:padding="14dp"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 🔹 Product Name -->
+        <TextView
+            android:id="@+id/productNameText"
+            android:text="Product Name"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 🔸 Quantity -->
+        <TextView
+            android:id="@+id/quantityText"
+            android:text="Quantity: 0"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 🔸 Weekly Sold -->
+        <TextView
+            android:id="@+id/weeklySoldText"
+            android:text="Weekly Sold: 0"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 🔸 Weeks Left -->
+        <TextView
+            android:id="@+id/weeksLeftText"
+            android:text="Weeks Left: ∞"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 🔸 Status -->
+        <TextView
+            android:id="@+id/statusText"
+            android:text="Status: OK"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 🔸 Quantity to Buy -->
+        <TextView
+            android:id="@+id/quantityToBuyText"
+            android:text="Quantity to Buy: 0"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

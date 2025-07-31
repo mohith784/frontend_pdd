@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GroceryManagerwithAI</string>
+    <string name="search">search</string>
+    <string name="add_product">add product</string>
+    <string name="back_button"><![CDATA[<string name=\"back_button\">Back</string>]]></string>
+    <string name="refresh_button"><![CDATA[<string name=\"back_button\">Back</string>\n<string name=\"refresh_button\">Refresh</string>\n\n]]></string>
+</resources>
