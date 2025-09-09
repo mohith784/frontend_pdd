@@ -3,4 +3,33 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#F5F5F5</color>
+
+    <!-- Missing Colors -->
+    <color name="dark_gray">#444444</color>
+    <color name="red">#E53935</color>
+    <color name="orange">#FF9800</color>
+
+    <!-- Modern Dashboard Colors -->
+    <color name="primary_blue">#1E88E5</color>
+    <color name="primary_blue_dark">#1976D2</color>
+    <color name="primary_blue_light">#42A5F5</color>
+    
+    <color name="accent_green">#4CAF50</color>
+    <color name="accent_orange">#FF9800</color>
+    <color name="accent_purple">#9C27B0</color>
+    
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_hint">#999999</color>
+    
+    <color name="background_light">#F8F9FA</color>
+    <color name="card_background">#FFFFFF</color>
+    
+    <!-- Bottom Navigation Colors -->
+    <color name="bottom_nav_icon_color">@color/text_secondary</color>
+    <color name="bottom_nav_text_color">@color/text_secondary</color>
+    
+    <!-- Alert Colors -->
+    <color name="alert_background">#FFF3E0</color>
+    <color name="alert_text">#E65100</color>
 </resources>

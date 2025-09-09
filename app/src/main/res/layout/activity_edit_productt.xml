@@ -7,8 +7,9 @@
     android:padding="16dp">
 
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:padding="8dp">
@@ -22,6 +23,7 @@
             android:layout_marginBottom="24dp">
 
             <TextView
+                android:id="@+id/tvCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"
@@ -33,13 +35,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Add Product"
+                android:text="Edit Product"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Product Photo -->
         <ImageView
+            android:id="@+id/imgProduct"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
@@ -53,13 +56,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add product photo (optional)"
+            android:text="Tap to change product photo"
             android:textSize="12sp"
             android:textColor="#999999"
             android:layout_marginBottom="24dp" />
 
         <!-- Product Name -->
         <EditText
+            android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter product name"
@@ -69,6 +73,7 @@
 
         <!-- Quantity -->
         <EditText
+            android:id="@+id/etQty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter quantity"
@@ -79,9 +84,10 @@
 
         <!-- Expiry Date -->
         <EditText
+            android:id="@+id/etExpiry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="yyyy / mm / dd"
+            android:hint="yyyy-mm-dd"
             android:inputType="date"
             android:background="@android:drawable/edit_text"
             android:padding="14dp"
@@ -90,6 +96,7 @@
 
         <!-- Weekly Sold -->
         <EditText
+            android:id="@+id/etWeeklySold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter weekly sales"
@@ -98,11 +105,12 @@
             android:padding="14dp"
             android:layout_marginBottom="24dp" />
 
-        <!-- Save Button -->
+        <!-- Update Button -->
         <Button
+            android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="Update"
             android:backgroundTint="#00C853"
             android:textColor="#FFFFFF"
             android:padding="14dp"

@@ -4,3 +4,4 @@
         <domain includeSubdomains="true">172.25.20.116</domain>
     </domain-config>
 </network-security-config>
+

@@ -7,48 +7,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context=".ProductActivity">
+    tools:context=".MyProducts">
 
-    <!-- Top Bar -->
-    <LinearLayout
+    <!-- ✅ Top Bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="10dp">
 
+        <!-- Back Button (Left) -->
         <ImageButton
+            android:id="@+id/backButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/settings"
-            android:background="@android:color/transparent" />
+            android:layout_alignParentStart="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/back" />
 
+        <!-- Title (Centered) -->
         <TextView
+            android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="My Products"
-            android:textSize="18sp"
             android:textColor="@color/black"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
+        <!-- Refresh Button (Right) -->
         <ImageButton
+            android:id="@+id/refreshButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/refresh"
-            android:background="@android:color/transparent" />
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/refresh" />
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/settings"
-            android:background="@android:color/transparent" />
-    </LinearLayout>
+    </RelativeLayout>
+
+    <!-- 🔍 Search Bar -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search products..."
+        android:iconifiedByDefault="false"
+        android:layout_margin="8dp"
+        android:background="@drawable/search_background" />
 
     <!-- Summary Cards -->
     <LinearLayout
@@ -62,6 +68,7 @@
 
         <!-- Total Products -->
         <LinearLayout
+            android:id="@+id/totalProductsCard"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -87,8 +94,9 @@
                 android:paddingTop="6dp" />
         </LinearLayout>
 
-        <!-- Low Stock -->
+        <!-- Expired Products -->
         <LinearLayout
+            android:id="@+id/expiredProductsCard"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -98,7 +106,7 @@
             android:layout_marginEnd="8dp">
 
             <TextView
-                android:id="@+id/lowStockText"
+                android:id="@+id/expiredText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -108,7 +116,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Low\nStock"
+                android:text="Expired"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:paddingTop="6dp" />
@@ -116,6 +124,7 @@
 
         <!-- Expiring Soon -->
         <LinearLayout
+            android:id="@+id/expiringSoonCard"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

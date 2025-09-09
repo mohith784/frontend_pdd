@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="8dp"
     android:layout_marginHorizontal="12dp"
-    android:elevation="6dp"
-    android:padding="14dp"
-    android:background="@android:color/white">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- 🖼️ Product Image -->
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_done_green"
+            android:contentDescription="Product Image" />
 
         <!-- 🔹 Product Name -->
         <TextView
             android:id="@+id/productNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Product Name"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_marginBottom="6dp" />
 
-        <!-- 🔸 Quantity -->
-        <TextView
-            android:id="@+id/quantityText"
-            android:text="Quantity: 0"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <!-- 🔸 Info Block -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="8dp">
 
-        <!-- 🔸 Weekly Sold -->
-        <TextView
-            android:id="@+id/weeklySoldText"
-            android:text="Weekly Sold: 0"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/quantityText"
+                android:text="Quantity: 0"
+                android:textSize="14sp"
+                android:textColor="#444444"
+                android:layout_marginBottom="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <!-- 🔸 Weeks Left -->
-        <TextView
-            android:id="@+id/weeksLeftText"
-            android:text="Weeks Left: ∞"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/weeklySoldText"
+                android:text="Weekly Sold: 0"
+                android:textSize="14sp"
+                android:textColor="#444444"
+                android:layout_marginBottom="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <!-- 🔸 Status -->
+            <TextView
+                android:id="@+id/weeksLeftText"
+                android:text="Weeks Left: ∞"
+                android:textSize="14sp"
+                android:textColor="#444444"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- 🔸 Status (highlighted) -->
         <TextView
             android:id="@+id/statusText"
             android:text="Status: OK"
             android:textStyle="bold"
             android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:background="@drawable/status_background"
+            android:layout_marginBottom="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -61,7 +92,9 @@
         <TextView
             android:id="@+id/quantityToBuyText"
             android:text="Quantity to Buy: 0"
-            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_red_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

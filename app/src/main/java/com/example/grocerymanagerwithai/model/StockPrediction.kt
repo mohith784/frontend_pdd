@@ -6,5 +6,6 @@ data class StockPrediction(
     val weekly_sold: Int,
     val weeks_left: Double,
     val status: String,
-    val quantity_to_buy: Int
+    val quantity_to_buy: Int,
+    val image_path: String
 )

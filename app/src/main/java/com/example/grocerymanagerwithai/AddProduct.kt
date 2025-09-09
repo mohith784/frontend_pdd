@@ -22,6 +22,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.util.*
 
 class AddProduct : AppCompatActivity() {
@@ -33,6 +35,7 @@ class AddProduct : AppCompatActivity() {
     private lateinit var btnSave: Button
     private lateinit var imgProduct: ImageView
     private var imageUri: Uri? = null
+    private var imageFile: File? = null   // store converted file
 
     private val PICK_IMAGE_REQUEST = 1
     private val PERMISSION_REQUEST_CODE = 123
@@ -49,7 +52,7 @@ class AddProduct : AppCompatActivity() {
         etQty = findViewById(R.id.etQty)
         etExpiry = findViewById(R.id.etExpiry)
         etWeeklySold = findViewById(R.id.etWeeklySold)
-        btnSave = findViewById(R.id.btnSave)
+        btnSave = findViewById(R.id.btnsave)
         imgProduct = findViewById(R.id.imgProduct)
 
         checkStoragePermission()
@@ -92,13 +95,9 @@ class AddProduct : AppCompatActivity() {
             val expiryBody = toRequestBody(exp)
             val weeklySoldBody = toRequestBody(weeklySold)
 
-            val imagePart = imageUri?.let { uri ->
-                val filePath = getRealPathFromURI(uri)
-                filePath?.let {
-                    val file = File(it)
-                    val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-                    MultipartBody.Part.createFormData("image", file.name, requestFile)
-                }
+            val imagePart = imageFile?.let { file ->
+                val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+                MultipartBody.Part.createFormData("image", file.name, requestFile)
             }
 
             RetrofitClient.instance.addProduct(
@@ -117,12 +116,20 @@ class AddProduct : AppCompatActivity() {
                         Toast.makeText(this@AddProduct, body.message, Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
-                        Toast.makeText(this@AddProduct, body?.message ?: "Server error", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@AddProduct,
+                            body?.message ?: "Server error",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
 
                 override fun onFailure(call: Call<GenericResponse>, t: Throwable) {
-                    Toast.makeText(this@AddProduct, "Network error: ${t.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@AddProduct,
+                        "Network error: ${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             })
         }
@@ -136,18 +143,32 @@ class AddProduct : AppCompatActivity() {
 
     private fun hasStoragePermission(): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
         } else {
-            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
         }
     }
 
     private fun checkStoragePermission() {
         if (!hasStoragePermission()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_MEDIA_IMAGES), PERMISSION_REQUEST_CODE)
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.READ_MEDIA_IMAGES),
+                    PERMISSION_REQUEST_CODE
+                )
             } else {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_REQUEST_CODE)
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    PERMISSION_REQUEST_CODE
+                )
             }
         }
     }
@@ -172,17 +193,26 @@ class AddProduct : AppCompatActivity() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data?.data != null) {
             imageUri = data.data
             imgProduct.setImageURI(imageUri)
+
+            // Convert URI to File for upload
+            imageUri?.let {
+                imageFile = uriToFile(it)
+            }
         }
     }
 
-    private fun getRealPathFromURI(uri: Uri): String? {
-        val projection = arrayOf(MediaStore.Images.Media.DATA)
-        contentResolver.query(uri, projection, null, null, null)?.use { cursor ->
-            val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            if (cursor.moveToFirst()) {
-                return cursor.getString(columnIndex)
+    // Convert Uri -> File (works for both gallery & camera)
+    private fun uriToFile(uri: Uri): File? {
+        return try {
+            val inputStream = contentResolver.openInputStream(uri) ?: return null
+            val tempFile = File.createTempFile("upload_", ".jpg", cacheDir)
+            FileOutputStream(tempFile).use { output ->
+                inputStream.copyTo(output)
             }
+            tempFile
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
         }
-        return null
     }
 }

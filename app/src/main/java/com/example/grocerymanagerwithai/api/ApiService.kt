@@ -51,11 +51,38 @@ interface ApiService {
     @GET("view_products.php")
     suspend fun getProducts(): ProductResponse
 
-    @GET("predict_stock.php")
-    suspend fun getStockPrediction(): List<StockPrediction>
+    /* ----------  DELETE PRODUCT ---------- */
+    @GET("delete.php")
+    fun deleteProduct(@Query("id") id: Int): Call<DeleteResponse>
+    // Using GenericResponse so success/message will match
+    // If your delete.php returns { "success": true, "message": "Deleted" }
+    // you can also create a DeleteResponse model separately.
+
+    /* ----------  STOCK PREDICTION ---------- */
+
+    @GET("predict.php")
+    suspend fun getStockPredictions(): StockPredictionResponse
 
     /* ----------  TOP SELLING PRODUCTS ---------- */
 
     @GET("top_selling.php")
     suspend fun getTopSellingProducts(): TopSellingResponse
+
+    /* ----------  EXPIRY PRODUCTS (Calendar) ---------- */
+
+    @GET("expiry_calendar.php")
+    fun getExpiryProducts(
+        @Query("date") date: String
+    ): Call<List<ExpiryProduct>>
+    /* ----------  CHANGE PASSWORD ---------- */
+
+    @FormUrlEncoded
+    @POST("change_password.php")
+    fun changePassword(
+        @Field("email") email: String,
+        @Field("old_password") oldPassword: String,
+        @Field("new_password") newPassword: String
+    ): Call<GenericResponse>
+
+
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <!-- Big radius = pill badge -->
+    <corners android:radius="999dp" />
+    <padding android:left="8dp" android:top="2dp" android:right="8dp" android:bottom="2dp"/>
+    <!-- Base color; we’ll tint this in XML / code -->
+    <solid android:color="@android:color/white"/>
+</shape>

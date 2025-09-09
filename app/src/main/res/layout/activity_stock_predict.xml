@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context=".StockPredictionActivity">
+    tools:context=".StockPredictt">
 
     <!-- 🔷 Top Bar: Back, Title, Refresh -->
     <LinearLayout
@@ -25,6 +25,7 @@
             android:layout_height="48dp"
             android:src="@drawable/back"
             android:background="@android:color/transparent"
+            app:tint="@android:color/black"
             android:contentDescription="Back" />
 
         <TextView
@@ -43,6 +44,7 @@
             android:layout_height="48dp"
             android:src="@drawable/refresh"
             android:background="@android:color/transparent"
+            app:tint="@android:color/black"
             android:contentDescription="Refresh" />
     </LinearLayout>
 

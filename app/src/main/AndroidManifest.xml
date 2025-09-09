@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permissions -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- For Android 12 and below -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- For Android 13+ -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- For Android 12 and below -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- For Android 13+ -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
@@ -20,34 +17,69 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryManagerwithAI"
         tools:targetApi="31">
-
-        <!-- Activities -->
-
-        <activity android:name=".HowStock" android:exported="false" />
-        <activity android:name=".HowAdd" android:exported="false" />
-        <activity android:name=".AppDo" android:exported="false" />
-        <activity android:name=".HelpFaq" android:exported="false" />
-        <activity android:name=".Lowstock" android:exported="false" />
-        <activity android:name=".AddProduct" android:exported="false" />
-        <activity android:name=".ChangePassword" android:exported="false" />
-        <activity android:name=".ForgotPassword" android:exported="false" />
-        <activity android:name=".Settings" android:exported="true" />
-        <activity android:name=".EditProductt" android:exported="false" />
-        <activity android:name=".StockPredictt" android:exported="false" />
-        <activity android:name=".MyProducts" android:exported="false" />
-        <activity android:name=".DashBoard" android:exported="false" />
-        <activity android:name=".SignupActivity" android:exported="false" />
-        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity
+            android:name=".ChangePasswor"
+            android:exported="false" />
+        <activity
+            android:name=".ShoppingGeneratorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpiryCalendarActivity"
+            android:exported="false" /> <!-- Activities -->
+        <activity
+            android:name=".HowStock"
+            android:exported="false" />
+        <activity
+            android:name=".HowAdd"
+            android:exported="false" />
+        <activity
+            android:name=".AppDo"
+            android:exported="false" />
+        <activity
+            android:name=".HelpFaq"
+            android:exported="false" />
+        <activity
+            android:name=".Lowstock"
+            android:exported="false" />
+        <activity
+            android:name=".AddProduct"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="true" />
+        <activity
+            android:name=".EditProductt"
+            android:exported="false" />
+        <activity
+            android:name=".StockPredictt"
+            android:exported="false" />
+        <activity
+            android:name=".MyProducts"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Fonts -->
+        </activity> <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

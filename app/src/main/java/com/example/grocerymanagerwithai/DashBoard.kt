@@ -3,9 +3,13 @@ package com.example.grocerymanagerwithai
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -17,14 +21,18 @@ import kotlinx.coroutines.launch
 
 class DashBoard : AppCompatActivity() {
 
-    private lateinit var addProduct: LinearLayout
-    private lateinit var viewProducts: LinearLayout
-    private lateinit var predictStock: LinearLayout
-    private lateinit var settings: LinearLayout
-    private lateinit var lowStockLayout: LinearLayout
+    // Top section
+    private lateinit var addProduct: MaterialCardView
+    private lateinit var viewProducts: MaterialCardView
+    private lateinit var predictStock: MaterialCardView
+    private lateinit var settings: FloatingActionButton
+    private lateinit var lowStockCard: MaterialCardView
     private lateinit var lowStockText: TextView
-    private lateinit var faq: LinearLayout
+    private lateinit var faq: MaterialCardView
     private lateinit var recyclerView: RecyclerView
+
+    // Bottom navigation
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,19 +40,21 @@ class DashBoard : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_dash_board)
 
-        // Initialize views
+        // Top section initialization
         addProduct = findViewById(R.id.addProduct)
         viewProducts = findViewById(R.id.viewProducts)
         predictStock = findViewById(R.id.predictStock)
         settings = findViewById(R.id.settings)
-        lowStockLayout = findViewById(R.id.lowStockText)
+        lowStockCard = findViewById(R.id.lowStockCard)
         lowStockText = findViewById(R.id.lowStockAlertText)
         faq = findViewById(R.id.faq)
         recyclerView = findViewById(R.id.topSellingRecyclerView)
-
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Click listeners
+        // Bottom navigation initialization
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+
+        // Top section click listeners
         addProduct.setOnClickListener {
             startActivity(Intent(this, AddProduct::class.java))
         }
@@ -61,16 +71,31 @@ class DashBoard : AppCompatActivity() {
             startActivity(Intent(this, Settings::class.java))
         }
 
-        lowStockLayout.setOnClickListener {
-            startActivity(Intent(this, Lowstock::class.java))
-        }
-
-        lowStockText.setOnClickListener {
+        lowStockCard.setOnClickListener {
             startActivity(Intent(this, Lowstock::class.java))
         }
 
         faq.setOnClickListener {
             startActivity(Intent(this, HelpFaq::class.java))
+        }
+
+        // Bottom navigation click listeners
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_calendar -> {
+                    startActivity(Intent(this, ExpiryCalendarActivity::class.java))
+                    true
+                }
+                R.id.nav_home -> {
+                    // Already on home, do nothing or refresh
+                    true
+                }
+                R.id.nav_shopping -> {
+                    startActivity(Intent(this, ShoppingGeneratorActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
 
         // Fetch top selling products

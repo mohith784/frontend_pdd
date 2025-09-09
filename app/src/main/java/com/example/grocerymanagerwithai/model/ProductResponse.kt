@@ -1,4 +1,6 @@
 package com.example.grocerymanagerwithai.model
+import java.io.Serializable
+
 
 data class ProductResponse(
     val status: String,
@@ -13,4 +15,4 @@ data class Product(
     val expiry_date: String,
     val weekly_sold: String,
     val image_path: String
-)
+) : Serializable

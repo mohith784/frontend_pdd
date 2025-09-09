@@ -23,6 +23,9 @@ class HelpFaq : AppCompatActivity() {
         val faq1 = findViewById<TextView>(R.id.faq1)
         val faq2 = findViewById<TextView>(R.id.faq2)
         val faq3 = findViewById<TextView>(R.id.faq3)
+        val changePassword = findViewById<TextView>(R.id.changePassword)
+        val privacySettings = findViewById<TextView>(R.id.privacySettings)
+        val accountDeletion = findViewById<TextView>(R.id.accountDeletion)
 
         faq1.setOnClickListener {
             Toast.makeText(this, "Opening App Details", Toast.LENGTH_SHORT).show()
@@ -41,5 +44,19 @@ class HelpFaq : AppCompatActivity() {
             Log.d("HelpFaq", "faq3 clicked")
             startActivity(Intent(this, HowStock::class.java))
         }
+
+        changePassword.setOnClickListener {
+            Toast.makeText(this, "Opening Change Password", Toast.LENGTH_SHORT).show()
+            Log.d("HelpFaq", "Change Password clicked")
+            startActivity(Intent(this, ChangePassword::class.java))
+        }
+
+        privacySettings.setOnClickListener {
+            Toast.makeText(this, "Opening Settings", Toast.LENGTH_SHORT).show()
+            Log.d("HelpFaq", "Privacy Settings clicked")
+            startActivity(Intent(this, Settings::class.java)) // ✅ Go to Settings page
+        }
+
+
     }
 }

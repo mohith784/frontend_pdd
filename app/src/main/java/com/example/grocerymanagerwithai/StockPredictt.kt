@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerymanagerwithai.adapter.StockPredictionAdapter
 import com.example.grocerymanagerwithai.api.RetrofitClient
 import com.example.grocerymanagerwithai.model.StockPrediction
+import com.example.grocerymanagerwithai.model.StockPredictionResponse
 import kotlinx.coroutines.launch
 
 class StockPredictt : AppCompatActivity() {
@@ -46,9 +47,13 @@ class StockPredictt : AppCompatActivity() {
     private fun fetchPredictions() {
         lifecycleScope.launch {
             try {
-                val response = RetrofitClient.instance.getStockPrediction()
+                // Call API correctly: getStockPredictions()
+                val response: StockPredictionResponse = RetrofitClient.instance.getStockPredictions()
+
+                // Clear old data and add new data from response.data
                 predictionList.clear()
-                predictionList.addAll(response)
+                predictionList.addAll(response.data)
+
                 adapter.notifyDataSetChanged()
             } catch (e: Exception) {
                 Toast.makeText(this@StockPredictt, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
